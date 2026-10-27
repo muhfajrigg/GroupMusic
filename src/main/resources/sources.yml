@@ -1,0 +1,63 @@
+# ============================================================
+#  GroupMusic - AUDIO SOURCES
+#  Audio is streamed from YouTube (or SoundCloud as fallback).
+#  Links from Spotify, Apple Music, etc. are used to resolve title + artist metadata.
+# ============================================================
+
+links:
+  # Set to true to allow players to queue links from ANY website (not recommended on public servers).
+  allow-any-url: false
+
+  # Domains played directly by Lavaplayer.
+  direct-hosts:
+    - youtube.com
+    - youtu.be
+    - music.youtube.com
+    - soundcloud.com
+    - on.soundcloud.com
+    - bandcamp.com
+
+  # "Lookup" hosts: Web page is fetched to read song title/artist, then queried on YouTube.
+  # Add other domains here if needed (the server will only connect to allowed hosts).
+  lookup-hosts:
+    - open.spotify.com
+    - spotify.link
+    - spotify.app.link
+    - music.apple.com
+    - deezer.com
+    - deezer.page.link
+    - tidal.com
+    - music.amazon.com
+    - music.yandex.com
+    - genius.com
+    - shazam.com
+
+  # Lookup connection timeout and browser User-Agent
+  lookup-timeout-seconds: 8
+  user-agent: "Mozilla/5.0 (compatible; GroupMusic/1.0.0)"
+
+search:
+  # Order of audio search providers. If one is empty or errors, automatically tries the next.
+  # ytsearch = YouTube, ytmsearch = YouTube Music, scsearch = SoundCloud.
+  providers:
+    - ytsearch
+    - ytmsearch
+    - scsearch
+  # Set to false to never use SoundCloud (as search provider or playback error fallback).
+  soundcloud-fallback: true
+
+# Official Spotify API (via LavaSrc): Supports reading albums & playlists.
+# Single Spotify track links work WITHOUT these keys via web/embed lookup.
+# How to get free Spotify developer credentials:
+#   1) Visit https://developer.spotify.com/dashboard, sign in, click "Create app".
+#   2) Set any Redirect URI (e.g. http://127.0.0.1:8888/callback), check "Web API".
+#   3) Open app Settings, copy Client ID and Client secret below, then restart server.
+spotify:
+  client-id: ""
+  client-secret: ""
+  country-code: "US"
+  # Mirror resolution order: %ISRC% = recording code (most accurate), %QUERY% = "title artist"
+  mirror-providers:
+    - 'ytsearch:"%ISRC%"'
+    - "ytsearch:%QUERY%"
+    - "scsearch:%QUERY%"

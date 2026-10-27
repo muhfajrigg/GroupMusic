@@ -1,0 +1,37 @@
+# ============================================================
+#  GroupMusic - GENERAL CONFIGURATION
+#
+#  Other files (located in plugins/GroupMusic/):
+#    sources.yml  -> Allowed URL domains, Spotify API, and search providers
+#    youtube.yml  -> YouTube clients, remote cipher, and Google OAuth
+#    ai.yml       -> AI search & suggestion configuration (optional)
+#    messages.yml -> All player-facing messages (MiniMessage format)
+#
+#  Apply changes using /musicreload (or restart for youtube.yml & Spotify keys).
+# ============================================================
+
+# Language file: "en" (messages.yml) or "id" (messages_id.yml)
+locale: en
+
+limits:
+  # Maximum number of pending tracks per group queue.
+  max-queue: 50
+  # Maximum track duration in minutes (0 = unlimited). Live streams are exempt.
+  max-track-minutes: 20
+  # Idle session timeout in seconds before closing when queue is empty (0 = disabled).
+  idle-timeout-seconds: 120
+
+volume:
+  # Default playback volume for groups (0-100).
+  # Players can also adjust individually in the Simple Voice Chat GUI menu (press V).
+  default: 100
+
+# Bossbar displaying now playing track and progress. Players can toggle via /musicbar.
+bossbar:
+  enabled: true
+  # Overlay styles: PROGRESS, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
+  overlay: PROGRESS
+  # Color options: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  color-playing: PINK
+  color-paused: YELLOW
+  color-live: RED

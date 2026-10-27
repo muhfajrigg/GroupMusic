@@ -1,0 +1,89 @@
+name: GroupMusic
+version: '${project.version}'
+main: me.muhfajrigg.music.GroupMusic
+api-version: '26.1'
+depend: [voicechat]
+description: Discord-like music bot for Simple Voice Chat groups
+author: muhfajrigg
+website: https://github.com/muhfajrigg/GroupMusic
+
+commands:
+  music:
+    description: Play a track or add to queue for your voice chat group
+    aliases: [lagu, play, gm, l]
+    usage: /<command> <title or link>
+    permission: groupmusic.use
+  musicsearch:
+    description: Search for songs using AI description/vibe
+    aliases: [lagucari, search]
+    usage: /<command> <description>
+    permission: groupmusic.search
+  musicstop:
+    description: Stop music and clear the queue
+    aliases: [lagustop, mstop]
+    usage: /<command>
+    permission: groupmusic.use
+  musicpause:
+    description: Pause or resume playback
+    aliases: [lagupause, pause, mpause]
+    usage: /<command>
+    permission: groupmusic.use
+  musicskip:
+    description: Skip the currently playing track
+    aliases: [laguskip, skip, mskip]
+    usage: /<command>
+    permission: groupmusic.use
+  musicqueue:
+    description: View the current group queue
+    aliases: [laguqueue, queue, mqueue]
+    usage: /<command>
+    permission: groupmusic.use
+  musicnow:
+    description: Show currently playing track info
+    aliases: [lagunow, nowplaying, np]
+    usage: /<command>
+    permission: groupmusic.use
+  musicloop:
+    description: Toggle loop mode (track, queue, or off)
+    aliases: [lagulagi, loop, mloop]
+    usage: /<command> [track|queue|off]
+    permission: groupmusic.use
+  musicshuffle:
+    description: Shuffle upcoming tracks in queue
+    aliases: [lagushuffle, shuffle, mshuffle]
+    usage: /<command>
+    permission: groupmusic.use
+  musicbar:
+    description: Toggle music bossbar visibility for yourself
+    aliases: [lagubar, mbar]
+    usage: /<command>
+    permission: groupmusic.use
+  musicvolume:
+    description: Set group music volume (0-100)
+    aliases: [laguvolume, volume, mvolume]
+    usage: /<command> [0-100]
+    permission: groupmusic.use
+  musiclogin:
+    description: Login to YouTube via Google OAuth (device code shown in chat)
+    aliases: [lagulogin]
+    usage: /<command>
+    permission: groupmusic.admin
+  musicreload:
+    description: Reload configuration and language files
+    aliases: [lagureload]
+    usage: /<command>
+    permission: groupmusic.admin
+
+permissions:
+  groupmusic.use:
+    description: Allows using standard music playback commands
+    default: true
+  groupmusic.search:
+    description: Allows using AI music search (/musicsearch)
+    default: true
+  groupmusic.ai.bypass-cooldown:
+    description: Bypass cooldown for AI search
+    default: op
+  groupmusic.admin:
+    description: Administrative commands (reload, YouTube login)
+    default: op

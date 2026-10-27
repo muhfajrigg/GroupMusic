@@ -1,0 +1,26 @@
+# ============================================================
+#  GroupMusic - YOUTUBE (Changes to this file require a server restart)
+# ============================================================
+
+# Order of YouTube clients. Valid names: MUSIC, WEB, WEBEMBEDDED, IOS, ANDROID,
+# ANDROID_MUSIC, ANDROID_VR, TV, TVHTML5_SIMPLY.
+# Note: Do not place IOS before WEB (search returns empty). TV requires OAuth.
+clients:
+  - MUSIC
+  - WEB
+  - IOS
+  - ANDROID_VR
+  - TV
+
+# Remote cipher decoding endpoint.
+# Default uses a public server (free, no password, availability not guaranteed).
+# Self-host your own instance: https://github.com/kikkia/yt-cipher
+remote-cipher:
+  url: "https://cipher.kikkia.dev/"
+  password: ""
+
+# Google OAuth login (helps bypass age-restricted or official music video blocks).
+# EASY LOGIN: As server OP, run /musiclogin in-game. A clickable link and device code
+# appear in chat. Authorize in your browser, and the refresh token is saved automatically.
+oauth: false
+oauth-refresh-token: ""

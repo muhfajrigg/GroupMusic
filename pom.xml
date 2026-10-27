@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>me.muhfajrigg</groupId>
+  <artifactId>GroupMusic</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>GroupMusic</name>
+  <description>Discord-like music bot for Simple Voice Chat groups on Paper servers</description>
+  <url>https://github.com/muhfajrigg/GroupMusic</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>muhfajrigg</id>
+      <name>muhfajrigg</name>
+      <url>https://github.com/muhfajrigg</url>
+    </developer>
+  </developers>
+
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>papermc</id>
+      <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+    <repository>
+      <id>maxhenkel</id>
+      <url>https://maven.maxhenkel.de/repository/public</url>
+    </repository>
+    <repository>
+      <id>lavalink</id>
+      <url>https://maven.lavalink.dev/releases</url>
+    </repository>
+    <!-- LavaSrc: Spotify source (playlist/album/song mirroring to YouTube/SoundCloud) -->
+    <repository>
+      <id>topi-releases</id>
+      <url>https://maven.topi.wtf/releases</url>
+    </repository>
+    <!-- youtube-source snapshot for latest YouTube (SABR) cipher fixes -->
+    <repository>
+      <id>lavalink-snapshots</id>
+      <url>https://maven.lavalink.dev/snapshots</url>
+      <releases><enabled>false</enabled></releases>
+      <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+    <!-- Required Lavaplayer transitive dependencies (jaadec, ibxm) -->
+    <repository>
+      <id>jitpack</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>26.3.build.143-beta</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- JSON library for AI API (provided by Paper at runtime) -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.11.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Intercept YouTube OAuth login code from log output (provided by Paper at runtime) -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.24.3</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Simple Voice Chat API -->
+    <dependency>
+      <groupId>de.maxhenkel.voicechat</groupId>
+      <artifactId>voicechat-api</artifactId>
+      <version>2.6.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Lavaplayer (audio decoding) + shaded dependencies -->
+    <dependency>
+      <groupId>dev.arbjerg</groupId>
+      <artifactId>lavaplayer</artifactId>
+      <version>2.2.6</version>
+    </dependency>
+    <!-- LavaSrc Spotify provider -->
+    <dependency>
+      <groupId>com.github.topi314.lavasrc</groupId>
+      <artifactId>lavasrc</artifactId>
+      <version>4.8.3</version>
+    </dependency>
+    <!-- YouTube source snapshot with player cipher support -->
+    <dependency>
+      <groupId>dev.lavalink.youtube</groupId>
+      <artifactId>v2</artifactId>
+      <version>2be8e542d3f6f178e048dca565892684c2e40177-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+            <configuration>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+              <artifactSet>
+                <excludes>
+                  <!-- slf4j is provided by Paper -->
+                  <exclude>org.slf4j:*</exclude>
+                </excludes>
+              </artifactSet>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>module-info.class</exclude>
+                    <exclude>META-INF/versions/*/module-info.class</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

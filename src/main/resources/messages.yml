@@ -1,0 +1,140 @@
+# ============================================================
+#  GroupMusic - PLAYER MESSAGES (English)
+#  MiniMessage format: <red>, <green>, <bold>, <click:...>, etc.
+#  Docs: https://docs.advntr.dev/minimessage/format.html
+# ============================================================
+
+prefix: "<aqua>♪ </aqua>"
+
+# Single track line representation in queue & announcements: <title> <length>
+track-line: "<white><title></white> <gray>[<length>]</gray>"
+
+general:
+  no-permission: "<prefix><red>You do not have permission to execute this command."
+  players-only: "<prefix><red>This command can only be executed by players."
+  voice-not-ready: "<prefix><red>Voice chat is not ready yet, please try again shortly."
+  no-voice-connection: "<prefix><red>You are not connected to voice chat. Ensure the Simple Voice Chat mod is installed and connected."
+  no-group: "<prefix><red>Create or join a voice chat group first (press V), then use music commands."
+  # For Bedrock players connected via Geyser voice web bridge:
+  no-voice-connection-bedrock: "<prefix><red>You are not connected to voice chat. Open the server's Bedrock voice web page (usually /voice), log in, and try again."
+  no-group-bedrock: "<prefix><red>Create or join a group via the Bedrock voice web page, then use music commands."
+  left-group: "<prefix><red>You are no longer in that voice group."
+  bossbar-on: "<prefix><gray>Music bossbar enabled."
+  bossbar-off: "<prefix><gray>Music bossbar disabled."
+
+play:
+  usage: "<prefix><gray>Usage: /music <title or link>"
+  searching: "<prefix><gray>Searching: <query>"
+  not-found: "<prefix><red>No matching track was found."
+  load-failed: "<prefix><red>Failed to load track: <reason>"
+  queued: "<prefix><green>Added to queue #<position>: </green><track>"
+  added-many: "<prefix><green>Added <count> tracks to the queue."
+  skipped-long: "<prefix><gray><count> tracks skipped because they exceed maximum duration."
+  skipped-full: "<prefix><gray>Remaining tracks skipped because queue is full."
+  queue-full: "<prefix><red>Queue is full (maximum <max> tracks)."
+  too-long: "<prefix><red>Track duration exceeds limit (maximum <minutes> minutes)."
+
+reason:
+  unknown: "Unknown error (check console)"
+  link-invalid: "Invalid URL provided."
+  link-blocked: "URL from this domain is not permitted. Use track title, or supported platforms (YouTube, SoundCloud, Spotify, Apple Music)."
+  collection-unsupported: "Album/playlist links are currently only supported for Spotify. For other platforms, use single track links or YouTube/SoundCloud playlists."
+  collection-failed: "Could not read track list. Ensure the playlist or album is PUBLIC and try again."
+  lookup-failed: "Could not parse track metadata from this URL. Try using the song title directly."
+
+announce:
+  now-playing: "<prefix><green>Now playing: </green><track><requested>"
+  requested-by: " <dark_gray>• requested by <player></dark_gray>"
+  stopped: "<prefix><gray>Playback stopped by <player>."
+  paused: "<prefix><gray><player> paused playback."
+  resumed: "<prefix><gray><player> resumed playback."
+  skipped: "<prefix><gray><player> skipped the track."
+  shuffled: "<prefix><gray><player> shuffled the queue."
+  loop-on: "<prefix><gray><player> enabled track looping."
+  loop-off: "<prefix><gray><player> disabled looping."
+  loop-queue-on: "<prefix><gray><player> enabled queue looping."
+  volume: "<prefix><gray><player> set group volume to <green><volume>%</green>."
+  idle-stop: "<prefix><gray>Playback stopped due to inactivity."
+  play-error: "<prefix><red>Playback failed for \"<title>\", skipping to next track."
+
+control:
+  nothing-playing-group: "<prefix><red>Nothing is currently playing in your group."
+  nothing-playing: "<prefix><red>No track is currently playing."
+  nothing-to-skip: "<prefix><red>No tracks available to skip."
+  shuffle-too-few: "<prefix><red>Not enough tracks in queue to shuffle."
+
+queue:
+  empty: "<prefix><red>The queue is empty."
+  header: "<prefix><green>Current: </green><track>"
+  none-next: "<prefix><gray>No upcoming tracks."
+  line: "<dark_gray>  <number>. </dark_gray><track>"
+  more: "<prefix><gray>...and <count> more tracks."
+
+now:
+  line: "<prefix><green>Now playing: </green><white><title></white><gray> (<progress>)</gray><loop>"
+  loop-tag: " <aqua>• loop</aqua>"
+  loop-queue-tag: " <aqua>• loop queue</aqua>"
+
+bossbar:
+  title: "<aqua>♪ </aqua><white><bold><title></bold></white><author>   <yellow><time></yellow><paused><loop>"
+  author: "<gray> - <author></gray>"
+  paused: "  <red>[PAUSED]</red>"
+  loop: "  <aqua>(loop)</aqua>"
+  loop-queue: "  <aqua>(loop queue)</aqua>"
+  live: "LIVE"
+
+loop:
+  usage: "<prefix><gray>Usage: /musicloop [track|queue|off]. Without options, toggles through modes."
+
+volume:
+  current: "<prefix><gray>Group volume: <green><volume>%</green>. Change using /musicvolume [0-100]."
+  usage: "<prefix><red>Usage: /musicvolume [0-100]"
+  category-name: "Group Music"
+  category-description: "Music volume from GroupMusic"
+
+login:
+  starting: "<prefix><gray>Starting YouTube login... device code will appear shortly."
+  failed-start: "<prefix><red>Login failed to start, see server console."
+  success: "<prefix><green>YouTube login successful! Refresh token saved automatically to youtube.yml."
+  success-info: "<prefix><gray>Complete, no server restart required. Try /music now."
+  title-sub: "<gray>Enter at google.com/device"
+  lines:
+    - ""
+    - "<prefix><gold><bold>YOUTUBE AUTHENTICATION</bold></gold>"
+    - "<gray>  1. Open (click): <click:open_url:'<url>'><aqua><underlined><url></underlined></aqua></click>"
+    - "<gray>  2. Enter code (click to copy): <click:copy_to_clipboard:'<code>'><yellow><bold><code></bold></yellow></click>"
+    - "<gray>  3. Sign in using a BACKUP Google account and grant permissions."
+    - ""
+  lines-no-code:
+    - ""
+    - "<prefix><gold><bold>YOUTUBE AUTHENTICATION</bold></gold>"
+    - "<gray>  1. Open (click): <click:open_url:'<url>'><aqua><underlined><url></underlined></aqua></click>"
+    - "<yellow>  2. <raw>"
+    - "<gray>  3. Sign in using a BACKUP Google account and grant permissions."
+    - ""
+
+ai:
+  disabled: "<prefix><red>AI feature is not enabled on this server."
+  usage: "<prefix><gray>Usage: /musicsearch <song description or mood>. Example: /musicsearch relaxing lofi study beats"
+  cooldown: "<prefix><red>Please wait <seconds> seconds before using /musicsearch again."
+  thinking: "<prefix><gray>Finding songs for: <query>"
+  no-result: "<prefix><red>No matching songs found."
+
+reload:
+  done: "<prefix><green>Configuration and messages reloaded."
+  note: "<prefix><gray>Changes in youtube.yml and Spotify credentials require a server restart."
+
+help:
+  header: "<gradient:aqua:blue><bold>━━━ GroupMusic Help ━━━</bold></gradient>"
+  lines:
+    - "<gold>/lagu play <title/url></gold> <gray>• Play or add track to queue</gray>"
+    - "<gold>/lagu pause</gold> <dark_gray>/</dark_gray> <gold>/lagu resume</gold> <gray>• Pause or resume playback</gray>"
+    - "<gold>/lagu skip</gold> <gray>• Skip the currently playing track</gray>"
+    - "<gold>/lagu queue</gold> <gray>• View the group track queue</gray>"
+    - "<gold>/lagu volume <0-100></gold> <gray>• Adjust group audio volume</gray>"
+    - "<gold>/lagu loop [track|queue|off]</gold> <gray>• Set repeat mode</gray>"
+    - "<gold>/lagu search <desc></gold> <gray>• AI-powered track search</gray>"
+    - "<gold>/lagu shuffle</gold> <gray>• Shuffle upcoming tracks in queue</gray>"
+    - "<gold>/lagu now</gold> <gray>• Show current track progress</gray>"
+    - "<gold>/lagu stop</gold> <gray>• Stop playback and clear the queue</gray>"
+  footer: "<gray>Tip: You can also use <aqua>/l</aqua> or <aqua>/music</aqua> as shortcuts!</gray>"

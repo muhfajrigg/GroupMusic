@@ -1,0 +1,138 @@
+# ============================================================
+#  GroupMusic - PESAN PEMAIN (Bahasa Indonesia)
+#  Format MiniMessage: <red>, <green>, <bold>, <click:...>, dst.
+#  Docs: https://docs.advntr.dev/minimessage/format.html
+# ============================================================
+
+prefix: "<aqua>♪ </aqua>"
+
+track-line: "<white><title></white> <gray>[<length>]</gray>"
+
+general:
+  no-permission: "<prefix><red>Kamu tidak punya izin untuk perintah ini."
+  players-only: "<prefix><red>Perintah ini hanya untuk pemain."
+  voice-not-ready: "<prefix><red>Voice chat belum siap, coba lagi sebentar."
+  no-voice-connection: "<prefix><red>Kamu belum terhubung ke voice chat. Pasang mod Simple Voice Chat dan pastikan sudah tersambung."
+  no-group: "<prefix><red>Buat atau gabung grup voice chat dulu (tekan V), lalu pakai perintah musik."
+  no-voice-connection-bedrock: "<prefix><red>Kamu belum terhubung ke voice chat. Buka halaman voice chat Bedrock milik server (biasanya lewat /voice), login, lalu coba lagi."
+  no-group-bedrock: "<prefix><red>Buat atau gabung grup lewat halaman voice chat Bedrock (menu Grup), lalu pakai perintah musik."
+  left-group: "<prefix><red>Kamu sudah tidak berada di grup itu."
+  bossbar-on: "<prefix><gray>Bossbar lagu dinyalakan."
+  bossbar-off: "<prefix><gray>Bossbar lagu dimatikan."
+
+play:
+  usage: "<prefix><gray>Pakai: /lagu [judul atau link]"
+  searching: "<prefix><gray>Mencari: <query>"
+  not-found: "<prefix><red>Lagu tidak ditemukan."
+  load-failed: "<prefix><red>Gagal memuat lagu: <reason>"
+  queued: "<prefix><green>Masuk antrean #<position>: </green><track>"
+  added-many: "<prefix><green>Menambahkan <count> lagu ke antrean."
+  skipped-long: "<prefix><gray><count> lagu dilewati karena terlalu panjang."
+  skipped-full: "<prefix><gray>Sisa lagu tidak dimasukkan karena antrean penuh."
+  queue-full: "<prefix><red>Antrean penuh (maks <max> lagu)."
+  too-long: "<prefix><red>Lagu terlalu panjang (maks <minutes> menit)."
+
+reason:
+  unknown: "tidak diketahui (cek console)"
+  link-invalid: "link tidak valid."
+  link-blocked: "link dari situs itu tidak diizinkan. Pakai judul lagu, atau link YouTube/SoundCloud/Spotify/Apple Music."
+  collection-unsupported: "link album/playlist hanya didukung untuk Spotify. Untuk situs lain pakai link lagu, atau playlist YouTube/SoundCloud."
+  collection-failed: "daftar lagu tidak bisa dibaca. Pastikan playlist/album-nya PUBLIK, lalu coba lagi."
+  lookup-failed: "judul lagu dari link itu tidak bisa dibaca. Coba pakai judul lagunya langsung."
+
+announce:
+  now-playing: "<prefix><green>Sekarang memutar: </green><track><requested>"
+  requested-by: " <dark_gray>• diminta <player></dark_gray>"
+  stopped: "<prefix><gray>Musik dihentikan oleh <player>."
+  paused: "<prefix><gray><player> menjeda lagu."
+  resumed: "<prefix><gray><player> melanjutkan lagu."
+  skipped: "<prefix><gray><player> melewati lagu."
+  shuffled: "<prefix><gray><player> mengacak antrean."
+  loop-on: "<prefix><gray><player> menyalakan pengulangan lagu."
+  loop-off: "<prefix><gray><player> mematikan pengulangan lagu."
+  loop-queue-on: "<prefix><gray><player> menyalakan pengulangan seluruh antrean."
+  volume: "<prefix><gray><player> mengatur volume musik ke <green><volume>%</green>."
+  idle-stop: "<prefix><gray>Musik berhenti karena tidak ada lagu di antrean."
+  play-error: "<prefix><red>Gagal memutar \"<title>\", lanjut ke lagu berikutnya."
+
+control:
+  nothing-playing-group: "<prefix><red>Tidak ada musik yang sedang diputar di grupmu."
+  nothing-playing: "<prefix><red>Tidak ada lagu yang sedang diputar."
+  nothing-to-skip: "<prefix><red>Tidak ada lagu yang bisa dilewati."
+  shuffle-too-few: "<prefix><red>Antrean terlalu sedikit untuk diacak."
+
+queue:
+  empty: "<prefix><red>Antrean kosong."
+  header: "<prefix><green>Sekarang: </green><track>"
+  none-next: "<prefix><gray>Tidak ada lagu berikutnya."
+  line: "<dark_gray>  <number>. </dark_gray><track>"
+  more: "<prefix><gray>...dan <count> lagu lainnya."
+
+now:
+  line: "<prefix><green>Sekarang memutar: </green><white><title></white><gray> (<progress>)</gray><loop>"
+  loop-tag: " <aqua>• ulang</aqua>"
+  loop-queue-tag: " <aqua>• ulang semua</aqua>"
+
+bossbar:
+  title: "<aqua>♪ </aqua><white><bold><title></bold></white><author>   <yellow><time></yellow><paused><loop>"
+  author: "<gray> - <author></gray>"
+  paused: "  <red>[JEDA]</red>"
+  loop: "  <aqua>(ulang)</aqua>"
+  loop-queue: "  <aqua>(ulang semua)</aqua>"
+  live: "LIVE"
+
+loop:
+  usage: "<prefix><gray>Pakai: /lagulagi [lagu|semua|mati]. Tanpa pilihan = ganti mode berurutan (mati > lagu > semua)."
+
+volume:
+  current: "<prefix><gray>Volume musik grup ini: <green><volume>%</green>. Ubah dengan /laguvolume [0-100]."
+  usage: "<prefix><red>Pakai: /laguvolume [0-100]"
+  category-name: "Musik Grup"
+  category-description: "Volume musik dari GroupMusic"
+
+login:
+  starting: "<prefix><gray>Memulai login YouTube... kode akan muncul di sini beberapa detik lagi."
+  failed-start: "<prefix><red>Login gagal dimulai, lihat console."
+  success: "<prefix><green>Login YouTube berhasil! Token sudah disimpan otomatis di youtube.yml."
+  success-info: "<prefix><gray>Selesai, tidak perlu restart. Coba /lagu sekarang."
+  title-sub: "<gray>Masukkan di google.com/device"
+  lines:
+    - ""
+    - "<prefix><gold><bold>LOGIN YOUTUBE</bold></gold>"
+    - "<gray>  1. Buka (klik): <click:open_url:'<url>'><aqua><underlined><url></underlined></aqua></click>"
+    - "<gray>  2. Masukkan kode (klik untuk salin): <click:copy_to_clipboard:'<code>'><yellow><bold><code></bold></yellow></click>"
+    - "<gray>  3. Login dengan akun Google CADANGAN, lalu izinkan."
+    - ""
+  lines-no-code:
+    - ""
+    - "<prefix><gold><bold>LOGIN YOUTUBE</bold></gold>"
+    - "<gray>  1. Buka (klik): <click:open_url:'<url>'><aqua><underlined><url></underlined></aqua></click>"
+    - "<yellow>  2. <raw>"
+    - "<gray>  3. Login dengan akun Google CADANGAN, lalu izinkan."
+    - ""
+
+ai:
+  disabled: "<prefix><red>Fitur AI belum diaktifkan di server ini."
+  usage: "<prefix><gray>Pakai: /lagucari [deskripsi lagu atau suasana]. Contoh: /lagucari lagu galau indo 2000an"
+  cooldown: "<prefix><red>Tunggu <seconds> detik lagi sebelum memakai /lagucari."
+  thinking: "<prefix><gray>Mencarikan lagu untuk: <query>"
+  no-result: "<prefix><red>Tidak ada lagu yang cocok."
+
+reload:
+  done: "<prefix><green>Config & pesan dimuat ulang."
+  note: "<prefix><gray>youtube.yml dan kunci Spotify baru berlaku setelah restart."
+
+help:
+  header: "<gradient:aqua:blue><bold>━━━ Bantuan GroupMusic ━━━</bold></gradient>"
+  lines:
+    - "<gold>/lagu play <judul/url></gold> <gray>• Putar atau tambah lagu ke antrean</gray>"
+    - "<gold>/lagu pause</gold> <dark_gray>/</dark_gray> <gold>/lagu resume</gold> <gray>• Jeda atau lanjutkan pemutaran</gray>"
+    - "<gold>/lagu skip</gold> <gray>• Lewati lagu yang sedang diputar</gray>"
+    - "<gold>/lagu queue</gold> <gray>• Lihat daftar antrean lagu grup</gray>"
+    - "<gold>/lagu volume <0-100></gold> <gray>• Atur volume audio grup</gray>"
+    - "<gold>/lagu loop [track|queue|off]</gold> <gray>• Atur mode pengulangan lagu</gray>"
+    - "<gold>/lagu search <deskripsi></gold> <gray>• Cari lagu pintar berbasis AI</gray>"
+    - "<gold>/lagu shuffle</gold> <gray>• Acak urutan lagu di antrean</gray>"
+    - "<gold>/lagu now</gold> <gray>• Tampilkan info lagu saat ini</gray>"
+    - "<gold>/lagu stop</gold> <gray>• Hentikan pemutaran dan kosongkan antrean</gray>"
+  footer: "<gray>Tips: Kamu juga bisa memakai singkatan <aqua>/l</aqua> atau <aqua>/music</aqua>!</gray>"
