@@ -165,7 +165,7 @@ public final class GroupSession {
             return pcm; // silence during pause / empty queue
         }
 
-        // COMMON_PCM_S16_BE = stereo, 16-bit big-endian. Average down to mono.
+        // DISCORD_PCM_S16_BE = stereo, 48 kHz, 16-bit big-endian. Average down to mono.
         byte[] d = frame.getData();
         if (d.length < FRAME_SAMPLES * 4) {
             return pcm;

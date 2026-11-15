@@ -38,7 +38,8 @@ public final class AudioSources {
     }
 
     public static Setup register(GroupMusic plugin, AudioPlayerManager playerManager) {
-        playerManager.getConfiguration().setOutputFormat(StandardAudioDataFormats.COMMON_PCM_S16_BE);
+        // Simple Voice Chat expects 48 kHz (960 samples per 20 ms frame)
+        playerManager.getConfiguration().setOutputFormat(StandardAudioDataFormats.DISCORD_PCM_S16_BE);
 
         YoutubeAudioSourceManager youtube = registerYoutube(plugin, playerManager);
         boolean spotify = registerSpotify(plugin, playerManager);
